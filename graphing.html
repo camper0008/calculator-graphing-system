@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Graph</title>
+        <meta charset="UTF-8">
+        <style>
+            * {
+                text-align: center;
+                margin: 0px;
+                border:none;
+                outline:none;
+                background-color: transparent;
+            }
+            body {
+                overflow: hidden;
+                background-color: rgb(20, 20, 20);
+            }
+            canvas {
+                transform: scale(1, -1)
+            }
+            #toolbar {
+                width: max-content;
+                height: max-content;
+                padding: 5px;
+                position: absolute;
+                margin: auto;
+                top: 10px;
+                left: 10px;
+                display:block;
+                background-color: white;
+            }
+            #toolbar > * {
+                width: 100px;
+                display: inline-block;
+                font-size: 15px;
+                font-family: 'Courier New', Courier, monospace
+            }
+            #insertGraphButton {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <div id="toolbar">
+            <input id="xZoom" type="text" placeholder="X Zoom">
+            <input id="yZoom" type="text" placeholder="Y Zoom">
+            <br>
+            <input id="insertGraph" type="text" placeholder="New Graph">
+            <InsertButton id="insertGraphButton">Insert</InsertButton>
+        </div>
+        <script src="graphing.js"></script>
+    </body>
+</html>
