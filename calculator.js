@@ -12,13 +12,13 @@ formulaList.slideUp(0);
 const functions = {
     form: (e) => {
         if (!formulaList.is(":visible")) {
-            formulaList.css('top', e.clientY+'px');
-            formulaList.css('left', e.clientX+'px');
+            formulaList.css('top', e.clientY + 'px');
+            formulaList.css('left', e.clientX + 'px');
         }
         formulaList.slideToggle();
     },
     clearOne: () => {
-        equation = equation.substr(0, equation.length-1)
+        equation = equation.substr(0, equation.length - 1)
         if (equation === '') {
             result.text('0');
         } else {
@@ -32,18 +32,18 @@ const functions = {
     },
     extraOn: () => {
         isAltMode = true;
-        $("div.btn[alt-text]").each( (_, element) => {
+        $("div.btn[alt-text]").each((_, element) => {
             $(element.children[0]).text($(element).attr('alt-text'))
         })
     },
     extraOff: () => {
         isAltMode = false;
-        $("div.btn[alt-text]").each( (_, element) => {
+        $("div.btn[alt-text]").each((_, element) => {
             $(element.children[0]).text($(element).attr('text'))
         })
     },
     random: () => {
-        let num = Math.random().toString().slice(0,5);
+        let num = Math.random().toString().slice(0, 5);
         if (shouldMultiply(equation, num)) {
             equation += '×';
         }
@@ -52,13 +52,13 @@ const functions = {
         resultHolder.scrollLeft(resultHolder.prop('scrollWidth'))
     },
     graph: () => {
-        window.open(window.location.pathname.replace('index.html','graphing.html?stdgraph='+functions.answer(true)))
+        window.open(window.location.pathname.replace('index.html', 'graphing.html?stdgraph=' + functions.answer(true)))
     },
     answer: (grabEquation) => {
         let fEq = equation; //formattedEquation
 
-        fEq = fEq.replace(/\÷/g,'/')
-        fEq = fEq.replace(/\×/g,'*')
+        fEq = fEq.replace(/\÷/g, '/')
+        fEq = fEq.replace(/\×/g, '*')
         fEq = fEq.replace(/log/g, 'Math.log')
 
         fEq = fEq.replace(/sin/g, '(180/pi)*Math.sin')
@@ -81,7 +81,7 @@ const functions = {
             func = (fEq) ? new Function('return ' + fEq) : new Function('return 0');;
             equation = func().toString()
             $('#error').slideUp();
-        } catch(err) {
+        } catch (err) {
             if (err.toString().match('x is not defined')) err += '; it is only used in graphing';
             $('#error').text(err)
             $('#error').slideDown();
@@ -93,10 +93,10 @@ const functions = {
         let formula = $(e.target).attr('formula') || ''
         let varToReplace = formulaVarInput.prop('value') || '';
         if (varToReplace !== '') {
-            varToReplace = varToReplace.replace(/\"\'/g,"");
-            varToReplace = varToReplace.replace(/\=/g,':');
-            varToReplace = varToReplace.replace(/\;/g,',');
-            varToReplace = varToReplace.replace(/([^\:\,]+)\:([^\,]+)/g,'\"$1\":"$2"');
+            varToReplace = varToReplace.replace(/\"\'/g, "");
+            varToReplace = varToReplace.replace(/\=/g, ':');
+            varToReplace = varToReplace.replace(/\;/g, ',');
+            varToReplace = varToReplace.replace(/([^\:\,]+)\:([^\,]+)/g, '\"$1\":"$2"');
             if (varToReplace.slice(-1) === ',') varToReplace = varToReplace.slice(0, -1);
             varToReplace = '{' + varToReplace + '}';
             let object = JSON.parse(varToReplace)
@@ -114,8 +114,8 @@ const functions = {
     }
 }
 
-document.onkeydown = (e) => {if (e.key === "Shift") functions.extraOn();}
-document.onkeyup = (e) => {if (e.key === "Shift") functions.extraOff();}
+document.onkeydown = (e) => { if (e.key === "Shift") functions.extraOn(); }
+document.onkeyup = (e) => { if (e.key === "Shift") functions.extraOff(); }
 
 let shouldMultiply = (eq, write) => {
 
@@ -139,12 +139,12 @@ $("div.btn").click((event) => {
 
     const element = $(event.target)
     if (isAltMode && element.attr('alt-write')) {
-    if (shouldMultiply(equation, element.attr('alt-write'))) {
-        equation += '×';
-    }
-    equation += element.attr('alt-write')
-    result.text(equation);
-    resultHolder.scrollLeft(resultHolder.prop('scrollWidth'))
+        if (shouldMultiply(equation, element.attr('alt-write'))) {
+            equation += '×';
+        }
+        equation += element.attr('alt-write')
+        result.text(equation);
+        resultHolder.scrollLeft(resultHolder.prop('scrollWidth'))
 
     } else if (element.attr('write')) {
         if (shouldMultiply(equation, element.attr('write'))) {
