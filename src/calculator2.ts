@@ -107,7 +107,6 @@ class Calculator2 {
     }
 
     private setButtonListeners = () => {
-        console.log(qAll('div.btn'))
         qAll('div.btn').forEach((element) => {
             element.addEventListener('click', (e) => {
                 const use = element.getAttribute('use');
@@ -197,9 +196,11 @@ class Calculator2 {
             this.htmlError.hidden = true;
         } catch(error) {
             if(error.toString().match('x is not defined')) error += '; it is only used in graphing';
+            console.log('sfdsdfsfd')
             this.htmlError.innerText = error;
             this.htmlError.hidden = false;
         }
+        this.updateResultText();
     }
 
     private openGraphingTool = () => { // functions.graph()
