@@ -1,5 +1,4 @@
-
-const graphing = () => {
+export const graphing = () => {
     /* editable stuff */
 
     const HARDCODED_X_ZOOM = 30;

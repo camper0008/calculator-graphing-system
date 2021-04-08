@@ -1,4 +1,5 @@
 import { calculator } from './calculator';
+import { graphing } from './graphing';
 
 const main = () => {
     
@@ -12,7 +13,7 @@ const main = () => {
         }
         
         case 'graphing.html': {
-            // graphing.ts
+            graphing();
             break;
         }
         
