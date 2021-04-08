@@ -1,4 +1,4 @@
-
+import { calculator } from './calculator';
 
 const main = () => {
     
@@ -7,7 +7,7 @@ const main = () => {
     switch(page) {
         
         case 'calculator.html': {
-            // calculator.ts
+            calculator();
             break;
         }
         
