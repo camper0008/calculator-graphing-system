@@ -56,7 +56,7 @@ export const calculator = () => {
             resultHolder.scrollLeft(resultHolder.prop('scrollWidth'))
         },
         graph: () => {
-            window.open(window.location.pathname.replace('index.html', 'graphing.html?stdgraph=' + functions.answer(true)))
+            window.open(window.location.pathname.replace('calculator.html', 'graphing.html?stdgraph=' + functions.answer(true)))
         },
         answer: (grabEquation: boolean) => {
             let fEq = equation; //formattedEquation

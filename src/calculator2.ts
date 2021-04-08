@@ -9,10 +9,28 @@
 
 import { qAll, qOne } from "./utils";
 
+
+
 interface UseArgument {
     html: HTMLElement,
     mouse: MouseEvent,
 }
+
+
+
+const shouldMultiply = (eq: string, write: string) => {
+    if(eq === '') return false;
+    if(write.match(/\./g) && eq.match(/\d?\.\d+$/)) return true;
+    if(write === ')') return false;
+    if(eq.slice(-1).match(/[\+\-\÷\×\^]/) || write.match(/[\%\+\-\÷\×\^]/)) return false;
+    if(eq.slice(-1) === '.' || write === '.') return false;
+    if(eq.slice(-1) === '(') return false;
+    if(eq.slice(-1) === ')' && write === ')') return false;
+    if(eq.slice(-1).match(/[0-9]/) && write.match(/[0-9]/)) return false;
+    return true;
+}
+
+
 
 class Calculator2 {
 
@@ -40,18 +58,6 @@ class Calculator2 {
         this.htmlFormulaList = qOne('#formulaList')!;
         this.htmlFormulaVarInput = qOne('#formulaVarInput')!;
         this.htmlError = qOne('#error')!;
-    }
-
-    private shouldMultiply = (eq: string, write: string) => {
-        if(eq === '') return false;
-        if(write.match(/\./g) && eq.match(/\d?\.\d+$/)) return true;
-        if(write === ')') return false;
-        if(eq.slice(-1).match(/[\+\-\÷\×\^]/) || write.match(/[\%\+\-\÷\×\^]/)) return false;
-        if(eq.slice(-1) === '.' || write === '.') return false;
-        if(eq.slice(-1) === '(') return false;
-        if(eq.slice(-1) === ')' && write === ')') return false;
-        if(eq.slice(-1).match(/[0-9]/) && write.match(/[0-9]/)) return false;
-        return true;
     }
 
     private updateResultText = () => {
@@ -117,13 +123,13 @@ class Calculator2 {
                 if(use !== 'form' && altUse !== 'form') this.hideFormulaList();
 
                 if(this.altMode && altWrite) {
-                    if(this.shouldMultiply(this.equation, altWrite)) this.equation += '×';
+                    if(shouldMultiply(this.equation, altWrite)) this.equation += '×';
                     this.equation += altWrite;
                     this.updateResultText();
                 } 
                 
                 else if(write) {
-                    if(this.shouldMultiply(this.equation, write)) this.equation += '×';
+                    if(shouldMultiply(this.equation, write)) this.equation += '×';
                     this.equation += write;
                     this.updateResultText();
                 } 
@@ -183,7 +189,7 @@ class Calculator2 {
 
     private insertRandomNumber = () => { // functions.random()
         const randomNumber = Math.random().toString().slice(0, 5);
-        if(this.shouldMultiply(this.equation, randomNumber)) this.equation += '×';
+        if(shouldMultiply(this.equation, randomNumber)) this.equation += '×';
         this.equation += randomNumber;
         this.updateResultText();
     }
@@ -204,7 +210,7 @@ class Calculator2 {
     }
 
     private openGraphingTool = () => { // functions.graph()
-        window.open(window.location.pathname.replace('index.html', 'graphing.html?stdgraph=' + this.replaceEquationAliases()));
+        window.open(window.location.pathname.replace('calculator2.html', 'graphing.html?stdgraph=' + this.replaceEquationAliases()));
     }
 
     private writeFormula = (arg: UseArgument) => { // functions.writeFormula()
