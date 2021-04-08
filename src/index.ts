@@ -1,4 +1,5 @@
 import { calculator } from './calculator';
+import { calculator2 } from './calculator2';
 import { graphing } from './graphing';
 
 const main = () => {
@@ -9,6 +10,11 @@ const main = () => {
         
         case 'calculator.html': {
             calculator();
+            break;
+        }
+
+        case 'calculator2.html': {
+            calculator2();
             break;
         }
         
