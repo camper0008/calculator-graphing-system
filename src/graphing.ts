@@ -121,5 +121,3 @@ export const graphing = () => {
     insertGraphButton.addEventListener('click', insertGraph);
     refresh();
 }
-
-graphing();
