@@ -3,18 +3,6 @@
 const HARDCODED_X_ZOOM = 30;
 const HARDCODED_Y_ZOOM = 30;
 
-const predefined = []
-
-/* stack overflow ez */
-let searchParams = new URLSearchParams(window.location.search)
-if (searchParams.has('stdgraph') && searchParams.get('stdgraph') != '') {
-    let param = searchParams.get('stdgraph')
-    let func = new Function(`return (x) => ${param!.replace(/\^/g,"+")};`)();
-    predefined.push(func)
-} else {
-    predefined.push((x: number) => Math.sin(x))
-}
-
 /* actual code */
 
 class Graph {
@@ -29,9 +17,6 @@ class Graph {
 }
 
 const graphsToRender = [new Graph((_: any) => 0, 'white'), new Graph((x: number) => 1e4*x, 'white')]
-predefined.forEach((func) => {
-    graphsToRender.push(new Graph(func))
-})
 
 /* html elements */
 
@@ -98,11 +83,11 @@ const refresh = () => {
     })
 }
 
-const redefineOffset = (e: MouseEvent) => {
+const redefineOffset = (event: MouseEvent) => {
 
     let rect = canvas.getBoundingClientRect();
-    xOffset -= e.clientX - rect.left - width * 0.5;
-    yOffset += e.clientY - rect.top - height * 0.5;
+    xOffset -= event.clientX - rect.left - width * 0.5;
+    yOffset += event.clientY - rect.top - height * 0.5;
 
     xOffset = Math.min(Math.max(-10000 + width * 0.5, xOffset), 10000 - width * 0.5);
     yOffset = Math.min(Math.max(-10000 + height * 0.5, yOffset), 10000 - height * 0.5);
@@ -128,9 +113,9 @@ const insertGraph = () => {
 
 /* connect stuff */
 
-window.onresize = refresh;
-canvas.onclick = redefineOffset;
-xZoomInput.oninput = refresh;
-yZoomInput.oninput = refresh;
-insertGraphButton.onclick = insertGraph;
+window.addEventListener('resize', refresh);
+canvas.addEventListener('click', redefineOffset);
+xZoomInput.addEventListener('click', refresh);
+yZoomInput.addEventListener('click', refresh)
+insertGraphButton.addEventListener('click', insertGraph);
 refresh();
