@@ -138,4 +138,16 @@ text {
     background-color: #fff;
     border: 1px solid rgb(235, 235, 235);
     border-radius: 5px;
+
+    
 }
+
+#formulaList.open {
+    overflow-y: hidden;
+    transition: height .3s linear;
+}
+
+#formulaList.closed {
+    height: 0!important;
+}
+
