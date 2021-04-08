@@ -22,6 +22,12 @@ const main = () => {
             graphing();
             break;
         }
+
+        // experimental version
+        case 'shiba.html': {
+            // shiba
+            break;
+        }
         
         default: {
             throw new Error('File not found!');
