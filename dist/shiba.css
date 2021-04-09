@@ -1,0 +1,24 @@
+
+:root {
+    --background-1: rgb(20, 20, 20);
+    --background-2: rgb(40, 40, 40);
+    --background-3: rgb(60, 60, 60);
+
+    --foregound-1: rgb(230, 230, 230);
+    --foregound-2: rgb(200, 200, 200);
+    --foregound-3: rgb(170, 170, 170);
+
+    --text-regular: rgb(20, 20, 20);
+    --text-special: rgb(220, 20, 20);
+    --text-washed: rgb(120, 120, 120);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-1);
+}
+
+#shiba {
+    border: 1px solid white;
+}
