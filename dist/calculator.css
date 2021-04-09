@@ -1,7 +1,27 @@
+:root {
+    --primary-light: #8064A1;
+    --primary-dark: #503E65;
+
+    --bg-light: #fff;
+    --bg-dark: #1f1f1f;
+
+    --btn-light: #f1f3f4;
+    --btn-dark: #474747;
+
+    --btn-light-alt: #dadce0;
+    --btn-dark-alt: #2f2f2f;
+
+    --txt-light: #000;
+    --txt-dark: #fff;
+}
 ::selection {
     color: white;
-
-    background-color: rgb(128, 100, 161);
+    background-color: var(--primary-light);
+}
+body {
+    color: var(--txt-light);
+    background-color: var(--bg-light);
+    border-color: var(--btn-light-alt);
 }
 calculator {
     display: block;
@@ -11,8 +31,9 @@ calculator {
     height: 400px;
     width: 600px;
 
-    background-color: #fff;
-    border: 1px solid rgb(235, 235, 235);
+    background-color: inherit;
+    border: 1px solid;
+    border-color: inherit;
     border-radius: 5px;
 }
 result {
@@ -35,13 +56,23 @@ result {
     border: inherit;
     border-radius: 5px;
 }
+text {
+    font-family: 'Roboto', sans-serif;
+    font-size: inherit;
+    text-align: inherit;
+    line-height: inherit;
+    color: inherit;
+
+    pointer-events: none;
+    cursor: inherit;
+}
 result > text {
     padding: 0px 25px;
-    white-space:nowrap;
+    white-space: nowrap;
 
     cursor: text;
 }
-btn-grid {
+.btn-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
@@ -54,76 +85,45 @@ btn-grid {
     height: 70%;
     width: 94%;
 }
-div.btn {
+.btn {
     line-height: 230%;
     width: 15%;
     height: 15%;
 
     font-size: large;
     text-align: center;
-    color: black;
+    color: var(--txt-light);
 
-    background-color: #f1f3f4;
+    background-color: var(--btn-light);
     border: 1px solid transparent;
     border-radius: 5px;
 
     cursor: pointer;
 }
-div.btn:active {
-    border-color: #000;
+.btn:active {
+    border-color: var(--txt-light);
 }
-div.btn > text {
+.btn > text {
     user-select: none;
 }
-.btn.dark {
-    background-color: #dadce0;
+.btn.alt {
+    background-color: var(--btn-light-alt);
 }
-.btn.blue {
+.btn.primary {
     color: white;
-
-    background-color: rgb(128, 100, 161);
+    background-color: var(--primary-light);
 }
 .btn.formula {
-    margin: 1px 5%;
+    margin: 1rem 5%;
     height: min-content;
     width: 90%;
     
     text-align: left;
     line-height: normal;
 
-    background-color: transparent;
+    background-color: inherit;
 }
-div.divider {
-    margin: 4px 5%;
-    height: 1px;
-    width: 90%;
-    
-    background-color: rgba(0, 0, 0, 0.75);
-}
-div.divider.shorter {
-    margin: 4px 5%;
-    height: 1px;
-    width: 45%;
-    
-    background-color: rgba(0, 0, 0, 0.75);
-}
-div.divider.shortest {
-    margin: 4px 5%;
-    height: 1px;
-    width: 22.5%;
-    
-    background-color: rgba(0, 0, 0, 0.75);
-}
-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: inherit;
-    text-align: inherit;
-    line-height: inherit;
-    color: inherit;
 
-    pointer-events: none;
-    cursor: inherit;
-}
 #formulaList {
     display: block;
 
@@ -135,19 +135,28 @@ text {
     overflow-x: hidden;
     overflow-y: auto;
 
-    background-color: #fff;
-    border: 1px solid rgb(235, 235, 235);
+    background-color: inherit;
+    border: 1px solid;
+    border-color: inherit;
     border-radius: 5px;
 
-    
-}
-
-#formulaList.open {
-    overflow-y: hidden;
-    transition: height .3s linear;
+    transition-timing-function: linear;
+	transition-duration: 0.3s;
+	transition-property: height, border-width;
 }
 
 #formulaList.closed {
+    border-width: 0px;
     height: 0!important;
+    transition-timing-function: linear;
+	transition-duration: 0.3s;
+	transition-property: height, border-width;
+    overflow-y: hidden;
 }
 
+#formulaList > input {
+    background-color: inherit;
+    border: inherit;
+    border-color: inherit;
+    color: var(--txt-light)
+}

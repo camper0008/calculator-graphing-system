@@ -9,60 +9,53 @@
     <body>
         <calculator>
             <result id="result"><text>0</text></result>
-            <btn-grid >
-                <div class="btn dark" use="form" text='form list'><text>form list</text></div>
-                <div class="btn dark" text="sin" alt-text="sin^-1" write="sin(" alt-write='sin^-1('><text>sin</text></div>
-                <div class="btn dark" write="("><text>(</text></div>
-                <div class="btn dark" write=")"><text>)</text></div>
-                <div class="btn dark" write="%"><text>%</text></div>
-                <div class="btn dark" text="CE" alt-text="C" use="clearOne" alt-use="clearAll"><text>CE</text></div>
+            <div class="btn-grid" >
+                <div class="btn alt" use="form" text='form list'><text>form list</text></div>
+                <div class="btn alt" text="sin" alt-text="sin^-1" write="sin(" alt-write='sin^-1('><text>sin</text></div>
+                <div class="btn alt" write="("><text>(</text></div>
+                <div class="btn alt" write=")"><text>)</text></div>
+                <div class="btn alt" write="%"><text>%</text></div>
+                <div class="btn alt" text="CE" alt-text="C" use="clearOne" alt-use="clearAll"><text>CE</text></div>
 
-                <div class="btn dark" text="extra" alt-text="extra off" use="extraOn" alt-use='extraOff'><text>extra</text></div>
-                <div class="btn dark" text="cos" alt-text="cos^-1" write="cos(" alt-write='cos^-1('><text>cos</text></div>
+                <div class="btn alt" text="extra" alt-text="extra off" use="extraOn" alt-use='extraOff'><text>extra</text></div>
+                <div class="btn alt" text="cos" alt-text="cos^-1" write="cos(" alt-write='cos^-1('><text>cos</text></div>
                 <div class="btn none" write="1"><text>1</text></div>
                 <div class="btn none" write="2"><text>2</text></div>
                 <div class="btn none" write="3""><text>3</text></div>
-                <div class="btn dark" write="÷"><text>÷</text></div>
+                <div class="btn alt" write="÷"><text>÷</text></div>
 
-                <div class="btn dark" write="pi"><text>π</text></div>
-                <div class="btn dark" text="tan" alt-text="tan^-1" write="tan(" alt-write='tan^-1('><text>tan</text></div>
+                <div class="btn alt" write="pi"><text>π</text></div>
+                <div class="btn alt" text="tan" alt-text="tan^-1" write="tan(" alt-write='tan^-1('><text>tan</text></div>
                 <div class="btn none" write="4"><text>4</text></div>
                 <div class="btn none" write="5"><text>5</text></div>
                 <div class="btn none" write="6"><text>6</text></div>
-                <div class="btn dark" write="×"><text>×</text></div>
+                <div class="btn alt" write="×"><text>×</text></div>
 
-                <div class="btn dark" text="e" alt-text="x" write="e" alt-write="x"><text>e</text></div>
-                <div class="btn dark" text="√" alt-text="ln" write="√(" alt-write="log("><text>√</text></div>
+                <div class="btn alt" text="e" alt-text="x" write="e" alt-write="x"><text>e</text></div>
+                <div class="btn alt" text="√" alt-text="ln" write="√(" alt-write="log("><text>√</text></div>
                 <div class="btn none" write="7"><text>7</text></div>
                 <div class="btn none" write="8"><text>8</text></div>
                 <div class="btn none" write="9"><text>9</text></div>
-                <div class="btn dark" write="-"><text>−</text></div>
+                <div class="btn alt" write="-"><text>−</text></div>
 
-                <div class="btn dark" text="graph" alt-text="random" use="graph" alt-use="random"><text>graph</text></div>
-                <div class="btn dark" text="x^y" alt-text="log10" write="^" alt-write='log10('><text>x^y</text></div>
+                <div class="btn alt" text="graph" alt-text="random" use="graph" alt-use="random"><text>graph</text></div>
+                <div class="btn alt" text="x^y" alt-text="log10" write="^" alt-write='log10('><text>x^y</text></div>
                 <div class="btn none" write="0"><text>0</text></div>
                 <div class="btn none" write="."><text>•</text></div>
-                <div class="btn blue" use="answer"><text>=</text></div>
-                <div class="btn dark" write="+"><text>+</text></div>
-            </btn-grid>
+                <div class="btn primary" use="answer"><text>=</text></div>
+                <div class="btn alt" write="+"><text>+</text></div>
+            </div>
         </calculator>
         <text id="error" style="text-align: center; margin: auto; color:red; display:block; font-size: x-large"></text>
-        <div id="formulaList">
+        <div id="formulaList" class="closed">
             <!-- Special characters: +-×÷√^ -->
-            <div class="divider"></div>
             <text style="display:block; width: 100%; text-align: center;">Variable definitions</text>
             <input id="formulaVarInput" placeholder="Ex: x=10;y=20;" style="text-align: center;">
-            <div class="divider"></div>
             <div class="btn formula" use="writeFormula" formula="b^2-4×a×c"><text>b^2-4×a×c</text></div>
-            <div class="divider shorter"></div>
             <div class="btn formula" use="writeFormula" formula="(-b+√(D))/2×a"><text>(-b+√(D))/2×a</text></div>
-            <div class="divider shortest"></div>
             <div class="btn formula" use="writeFormula" formula="(-b+√(D))/2×a"><text>(-b-√(D))/2×a</text></div>
-            <div class="divider shorter"></div>
             <div class="btn formula" use="writeFormula" formula="(-b)/2×a"><text>(-b)/2×a</text></div>
-            <div class="divider shortest"></div>
             <div class="btn formula" use="writeFormula" formula="(-D)/4×a"><text>(-D)/4×a</text></div>
-            <div class="divider"></div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="main.js"></script>
