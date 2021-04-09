@@ -80,6 +80,10 @@ abstract class UIElement {
     
 }
 
+export const renderUI = (element: UIElement) => {
+    
+}
+
 
 export class UIDiv extends UIElement {
     
